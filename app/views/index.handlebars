@@ -1,33 +1,48 @@
-    {{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto. --}}
+{{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto. --}}
 
-    {{!-- * Create a button in `index.handlebars` that will submit the user input into the database. --}}
-
-
-
-{{!-- Step 1 --}}
+{{!-- * Create a button in `index.handlebars` that will submit the user input into the database. --}}
 
     {{!-- Create a route to index that will display our UI. What that will include: --}}
 
-        {{!-- We need a button for a submit --}}
-            {{!-- Using jquery on click --}}
 
-        {{!-- We need an input field --}}
-            {{!-- We will need to get the value from the input field --}}
-                {{!-- We can get the value using a jquery on click function that will get the value --}}
-        
-        {{!-- Add a photo and a background for UI --}}
-            {{!-- we will inport this from our public folder --}}
-
+    {{!-- Input Field --}}
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </form>
 
 
-{{!-- Step 2 --}}
+    {{!-- We need a button for a submit --}}
+    <button class="btn btn-primary btn-lg btn-block" id="add-btn">Submit</button>
 
-    {{!-- Once the user has input their burger type, we will need to display it on the screen --}}
-        {{!-- we can do this by pushing to DB to store it, pull it back and display it --}}
-            {{!-- Needs to display on the left hand side and be able to be selected --}}
-        
-        {{!-- Once the burger is displayed, we need to be able to click and move it to the left hand side of the screen --}}
-            {{!-- Again, we can use a jquery on click function to have the button do its job once clicked --}}
-        
 
-        
+    {{!-- JQERY  --}}
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <script>
+
+        // call the button
+        $("#add-btn").on("click", function (event) {
+            alert("Added a Burger");
+            console.log(event);
+            // get the value of the input and the click
+        })
+
+    </script>
+
+</body>
+
+</html>
+
+
+//{{!-- Step 2 --}}
+
+// {{!-- Once the user has input their burger type, we will need to display it on the screen --}}
+// {{!-- we can do this by pushing to DB to store it, pull it back and display it --}}
+// {{!-- Needs to display on the left hand side and be able to be selected --}}
+
+// {{!-- Once the burger is displayed, we need to be able to click and move it to the left hand side of the screen --}}
+// {{!-- Again, we can use a jquery on click function to have the button do its job once clicked --}}
