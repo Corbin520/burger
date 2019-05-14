@@ -2,12 +2,18 @@
 
 <img id="burger-picture" src="/assets/img/burgerPhoto.jpg" alt="Burger Picture" height="250" width="250" />
 
-{{!-- for loop --}}
-{{#each burgers}}
-    <li>
-        {{this.burger_name}}
-    </li>
-{{/each}}
+
+<section class="row"></section>
+    <div class="+col-md-7 col-left">
+        <table>
+            {{#each burgers}}
+            <button>{{this.burger_name}}</button>
+            {{/each}}
+        </table>
+    </div>
+</section>
+
+
 
 <form>
     <div class="form-group">
@@ -25,7 +31,7 @@
 
         var burgerName = $("#burger-input").val().trim()
 
-        $.post("/burger/add", {burgerName}, function (data) {
+        $.post("/burger/add", { burgerName }, function (data) {
             console.log(data)
         });
     });
@@ -45,37 +51,3 @@
 
 
 
-
-
-
-
-
-
-
-
-{{!-- Step 2 --}}
-
-{{!-- Once the user has input their burger type, we will need to display it on the screen --}}
-{{!-- we can do this by pushing to DB to store it, pull it back and display it --}}
-{{!-- Needs to display on the left hand side and be able to be selected --}}
-
-{{!-- Once the burger is displayed, we need to be able to click and move it to the left hand side of the screen --}}
-{{!-- Again, we can use a jquery on click function to have the button do its job once clicked --}}
-
-
-{{!-- <div>
-        <h1>Eat Da Burger</h1>
-
-        {{#each}}
-            <div>
-                {{#unless showTitle}}
-                <h1>Home</h1>
-                {{/unless}}
-
-
-                {{#if showTitle}}
-                <h1>Home</h1>
-                {{/if}}
-            </div>
-        {{/each}}
-    </div> --}}

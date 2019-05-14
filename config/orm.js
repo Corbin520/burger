@@ -21,27 +21,26 @@ var connection = require("../config/connection")
         // Selecting everything from the DB
         selectAll: function(tableName, cb) {
 
-            // String we want to use to search out DB
             var queryString = "SELECT * FROM ??"; 
-            console.log(queryString)
-            // these will replace the questions marks on the query string
+
             connection.query(queryString, [tableName], function(err, result) {
                 if (err) throw err;
-                // grab our result
+ 
                 cb(result);
             });
         },
 
-        // Inserting the users input into the Datbase 
+
         insertOne: function(tableName, columnNames, columnValues) {
             var queryString = 'INSERT INTO ?? (??) VALUES (?)'
-            // console.log(queryString);
+
             var q = connection.query(queryString, [tableName, columnNames, columnValues], function(err, result) {
                 if (err) throw err;
             })
         },
 
- 
+
+        // Did not have time to get this set up
         // updateOne: function(arg1, arg2, arg3) {
         //     var queryString = "SELECT * FROM ??";
         //     console.log(queryString);
@@ -51,5 +50,3 @@ var connection = require("../config/connection")
         //     })
         // }
     };
-
-// export this to 'burgers.js

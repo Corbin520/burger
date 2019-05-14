@@ -5,9 +5,6 @@ var router = express.Router();
 
 var burger = require("../models/burger.js");
 
-// create out routes
-
-// router.get
 router.get('/', function (req, res) {
     burger.getAllBurgers(function (data) {
         var hbsObject = {
@@ -29,7 +26,7 @@ router.post('/burger/add', function (req, res) {
     ]);
     
     res.redirect('/');
-    // eventually push this to page
+
 })
 
 module.exports = router;

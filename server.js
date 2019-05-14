@@ -18,7 +18,7 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// routes from burger_controller.js
+
 var routes = require("./controllers/burgers_controller");
 
 app.use(routes)
