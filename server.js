@@ -5,8 +5,8 @@ var exphbs = require("express-handlebars");
 var path = require("path")
 var mysql = require("mysql");
 
-// var PORT = process.env.PORT || 8080;
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
+
 
 var app = express();
 
