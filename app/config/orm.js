@@ -1,3 +1,5 @@
+// Working
+
 
 // reqire the connection from 'connections.js'
 var connection = require("../config/connection")
@@ -14,42 +16,40 @@ var connection = require("../config/connection")
 
 
     
-    var orm = {
+    module.exports = {
 
-        // 'selectAll'
-        selectAll: function(arg1, arg2, arg3) {
+        // Selecting everything from the DB
+        selectAll: function(tableName, cb) {
 
             // String we want to use to search out DB
-            var queryString = "SELECT * FROM ??";
+            var queryString = "SELECT * FROM ??"; 
             console.log(queryString)
             // these will replace the questions marks on the query string
-            connection.query(queryString, [arg1, arg2, arg3], function(err, result) {
+            connection.query(queryString, [tableName], function(err, result) {
                 if (err) throw err;
                 // grab our result
-                console.log(result)
+                cb(result);
             });
         },
 
-        // 'insertOne'
-        insertOne: function(arg1, arg2, arg3) {
-            var queryString = "SELECT * FROM ??";
-            console.log(queryString);
-            connection.query(queryString, [arg1, arg2, arg3], function(err, result) {
+        // Inserting the users input into the Datbase 
+        insertOne: function(tableName, columnNames, columnValues) {
+            var queryString = 'INSERT INTO ?? (??) VALUES (?)'
+            // console.log(queryString);
+            var q = connection.query(queryString, [tableName, columnNames, columnValues], function(err, result) {
                 if (err) throw err;
-                console.log(result)
             })
         },
 
-        // 'updateOne'
-        updateOne: function(arg1, arg2, arg3) {
-            var queryString = "SELECT * FROM ??";
-            console.log(queryString);
-            connection.query(queryString, [arg1, arg2, arg3], function(err, result) {
-                if (err) throw err;
-                console.log(result)
-            })
-        }
+ 
+        // updateOne: function(arg1, arg2, arg3) {
+        //     var queryString = "SELECT * FROM ??";
+        //     console.log(queryString);
+        //     connection.query(queryString, [arg1, arg2, arg3], function(err, result) {
+        //         if (err) throw err;
+        //         console.log(result)
+        //     })
+        // }
     };
 
 // export this to 'burgers.js
-module.exports = orm

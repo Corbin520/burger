@@ -1,48 +1,81 @@
-{{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto. --}}
+<h1>Eat Da Burger</h1>
 
-{{!-- * Create a button in `index.handlebars` that will submit the user input into the database. --}}
+<img id="burger-picture" src="/assets/img/burgerPhoto.jpg" alt="Burger Picture" height="250" width="250" />
 
-    {{!-- Create a route to index that will display our UI. What that will include: --}}
+{{!-- for loop --}}
+{{#each burgers}}
+    <li>
+        {{this.burger_name}}
+    </li>
+{{/each}}
 
-
-    {{!-- Input Field --}}
-    <form>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-    </form>
-
-
-    {{!-- We need a button for a submit --}}
-    <button class="btn btn-primary btn-lg btn-block" id="add-btn">Submit</button>
-
-
-    {{!-- JQERY  --}}
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<form>
+    <div class="form-group">
+        <label for="burger-input">Enter your favorite burger</label>
+        <textarea class="form-control" id="burger-input" rows="3"></textarea>
+    </div>
+</form>
 
 
-    <script>
+<button class="btn btn-primary btn-lg btn-block" id="add-btn">Submit</button>
 
-        // call the button
-        $("#add-btn").on("click", function (event) {
-            alert("Added a Burger");
-            console.log(event);
-            // get the value of the input and the click
-        })
+<script>
+    $("#add-btn").on("click", function (event) {
+        event.preventDefault();
 
-    </script>
+        var burgerName = $("#burger-input").val().trim()
 
-</body>
-
-</html>
+        $.post("/burger/add", {burgerName}, function (data) {
+            console.log(data)
+        });
+    });
 
 
-//{{!-- Step 2 --}}
+</script>
 
-// {{!-- Once the user has input their burger type, we will need to display it on the screen --}}
-// {{!-- we can do this by pushing to DB to store it, pull it back and display it --}}
-// {{!-- Needs to display on the left hand side and be able to be selected --}}
 
-// {{!-- Once the burger is displayed, we need to be able to click and move it to the left hand side of the screen --}}
-// {{!-- Again, we can use a jquery on click function to have the button do its job once clicked --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- Step 2 --}}
+
+{{!-- Once the user has input their burger type, we will need to display it on the screen --}}
+{{!-- we can do this by pushing to DB to store it, pull it back and display it --}}
+{{!-- Needs to display on the left hand side and be able to be selected --}}
+
+{{!-- Once the burger is displayed, we need to be able to click and move it to the left hand side of the screen --}}
+{{!-- Again, we can use a jquery on click function to have the button do its job once clicked --}}
+
+
+{{!-- <div>
+        <h1>Eat Da Burger</h1>
+
+        {{#each}}
+            <div>
+                {{#unless showTitle}}
+                <h1>Home</h1>
+                {{/unless}}
+
+
+                {{#if showTitle}}
+                <h1>Home</h1>
+                {{/if}}
+            </div>
+        {{/each}}
+    </div> --}}
